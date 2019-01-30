@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -16,9 +17,9 @@ import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 
 public class MainActivity extends AppCompatActivity {
-
+    private static final String TAG = "MainActivity";
     int RC_SIGN_IN = 0;
-    SignInButton signInButton;
+    Button signInButton;
     GoogleSignInClient mGoogleSignInClient;
 
     @Override
@@ -72,7 +73,8 @@ public class MainActivity extends AppCompatActivity {
         } catch (ApiException e) {
             // The ApiException status code indicates the detailed failure reason.
             // Please refer to the GoogleSignInStatusCodes class reference for more information.
-            Log.w("Google Sign In Error", "signInResult:failed code=" + e.getStatusCode());
+            Log.d(TAG, "handleSignInResult: ");
+            Log.d(TAG, "signInResult:failed code=" + e.getMessage()+e.getStatusCode());
             Toast.makeText(MainActivity.this, "Failed", Toast.LENGTH_LONG).show();
         }
     }
